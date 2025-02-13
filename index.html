@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern UI Component Kit</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      color: var(--color-text-primary);
+      margin-bottom: 1.5rem;
+      transition: color 0.3s ease;
+    }
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .demo-card {
+      padding: 1.5rem;
+      background-color: var(--color-bg-primary);
+      border-radius: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    [data-theme="dark"] .demo-card {
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .demo-title {
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .demo-content {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="section-title">Modern UI Component Kit</h1>
+
+    <!-- Theme Toggle -->
+    <section class="section">
+      <div class="demo-card">
+        <h3 class="demo-title">Theme Settings</h3>
+        <div class="demo-content">
+          <ui-toggle id="themeToggle" label="Dark Mode"></ui-toggle>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons Section -->
+    <section class="section">
+      <h2 class="section-title">Buttons</h2>
+      <div class="component-grid">
+        <div class="demo-card">
+          <h3 class="demo-title">Button Variants</h3>
+          <div class="demo-content">
+            <ui-button>Primary Button</ui-button>
+            <ui-button variant="secondary">Secondary Button</ui-button>
+            <ui-button variant="ghost">Ghost Button</ui-button>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h3 class="demo-title">Disabled State</h3>
+          <div class="demo-content">
+            <ui-button disabled>Disabled Primary</ui-button>
+            <ui-button variant="secondary" disabled>Disabled Secondary</ui-button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inputs Section -->
+    <section class="section">
+      <h2 class="section-title">Form Elements</h2>
+      <div class="component-grid">
+        <div class="demo-card">
+          <h3 class="demo-title">Text Inputs</h3>
+          <div class="demo-content">
+            <ui-input label="Username" placeholder="Enter username"></ui-input>
+            <ui-input type="password" label="Password" placeholder="Enter password"></ui-input>
+          </div>
+        </div>
+        <div class="demo-card">
+          <h3 class="demo-title">Toggle Switches</h3>
+          <div class="demo-content">
+            <ui-toggle label="Notifications"></ui-toggle>
+            <ui-toggle label="Auto-save" checked></ui-toggle>
+            <ui-toggle label="Disabled" disabled></ui-toggle>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Avatar Section -->
+    <section class="section">
+      <h2 class="section-title">Avatars</h2>
+      <div class="component-grid">
+        <div class="demo-card">
+          <h3 class="demo-title">Square Avatars</h3>
+          <div class="demo-content">
+            <ui-avatar 
+              name="John Doe"
+              variant="square"
+              size="mobile">
+            </ui-avatar>
+            <ui-avatar 
+              name="John Doe"
+              variant="square"
+              size="desktop"
+              image="https://i.pravatar.cc/150?u=john">
+            </ui-avatar>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3 class="demo-title">Circle Avatars</h3>
+          <div class="demo-content">
+            <ui-avatar 
+              name="Jane Smith"
+              variant="circle"
+              size="mobile">
+            </ui-avatar>
+            <ui-avatar 
+              name="Jane Smith"
+              variant="circle"
+              size="desktop"
+              image="https://i.pravatar.cc/150?u=jane">
+            </ui-avatar>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3 class="demo-title">Horizontal Pills</h3>
+          <div class="demo-content" style="flex-direction: column; gap: 1rem;">
+            <ui-avatar 
+              name="Alex Johnson"
+              variant="pill"
+              direction="horizontal"
+              size="mobile">
+            </ui-avatar>
+            <ui-avatar 
+              name="Alex Johnson"
+              variant="pill"
+              direction="horizontal"
+              size="desktop"
+              image="https://i.pravatar.cc/150?u=alex">
+            </ui-avatar>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3 class="demo-title">Vertical Pills</h3>
+          <div class="demo-content">
+            <ui-avatar 
+              name="Sarah Wilson"
+              variant="pill"
+              direction="vertical"
+              size="mobile">
+            </ui-avatar>
+            <ui-avatar 
+              name="Sarah Wilson"
+              variant="pill"
+              direction="vertical"
+              size="desktop"
+              image="https://i.pravatar.cc/150?u=sarah">
+            </ui-avatar>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="section">
+      <h2 class="section-title">Cards</h2>
+      <div class="component-grid">
+        <ui-card elevation="low">
+          <h3>Low Elevation Card</h3>
+          <p>This is a card with low elevation and default padding.</p>
+        </ui-card>
+        <ui-card elevation="medium">
+          <h3>Medium Elevation Card</h3>
+          <p>This is a card with medium elevation and default padding.</p>
+        </ui-card>
+        <ui-card elevation="high" padding="large">
+          <h3>High Elevation Card</h3>
+          <p>This is a card with high elevation and large padding.</p>
+        </ui-card>
+      </div>
+    </section>
+
+    <!-- Modal Demo -->
+    <section class="section">
+      <h2 class="section-title">Modal</h2>
+      <div class="demo-card">
+        <h3 class="demo-title">Modal Dialog</h3>
+        <div class="demo-content">
+          <ui-button id="openModalBtn">Open Modal</ui-button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal Component -->
+    <ui-modal id="demoModal" title="Demo Modal">
+      <p>This is a modal dialog component with a backdrop. Click outside or use the close button to dismiss.</p>
+      <div style="margin-top: 1rem;">
+        <ui-button variant="secondary" id="closeModalBtn">Close Modal</ui-button>
+      </div>
+    </ui-modal>
+  </div>
+
+  <!-- Component Scripts -->
+  <script type="module" src="/src/components/Button.js"></script>
+  <script type="module" src="/src/components/Input.js"></script>
+  <script type="module" src="/src/components/Toggle.js"></script>
+  <script type="module" src="/src/components/Card.js"></script>
+  <script type="module" src="/src/components/Modal.js"></script>
+  <script type="module" src="/src/components/Avatar.js"></script>
+
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Set initial theme based on system preference
+    if (prefersDark.matches) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeToggle.setAttribute('checked', '');
+    }
+
+    // Handle theme toggle
+    themeToggle.addEventListener('change', (e) => {
+      if (e.detail.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    });
+
+    // Modal Demo
+    const modal = document.getElementById('demoModal');
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    openModalBtn.addEventListener('click', () => {
+      modal.setAttribute('open', '');
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      modal.removeAttribute('open');
+    });
+  </script>
+</body>
+</html> 
