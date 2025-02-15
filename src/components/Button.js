@@ -49,12 +49,12 @@ export class Button extends HTMLElement {
       }
 
       .button--primary {
-        background-color: var(--color-primary, #90CAF9);
+        background-color: var(--color-accent, #90CAF9);
         color: var(--color-text-primary, #333333);
       }
 
       .button--primary:hover:not(:disabled) {
-        background-color: var(--color-primary-dark, #42A5F5);
+        background-color: color-mix(in srgb, var(--color-accent, #90CAF9) 80%, black);
       }
 
       .button--secondary {

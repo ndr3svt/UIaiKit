@@ -17,6 +17,14 @@ export default {
           DEFAULT: '#F48FB1',
           dark: '#EC407A',
         },
+        accent: {
+          blue: '#A7CBDA',
+          beige: '#DCDCC9',
+          orange: '#FA9133',
+          pink: '#F9C8C5',
+          yellow: '#F5C260',
+          cyan: '#33DBF5',
+        },
         neutral: {
           lightest: '#FAFAFA',
           light: '#F5F5F5',

@@ -163,7 +163,7 @@ export class Toggle extends HTMLElement {
       }
 
       .toggle-slider.checked {
-        background-color: #90CAF9;
+        background-color: var(--color-accent, #90CAF9);
       }
 
       .toggle-slider.checked:before {

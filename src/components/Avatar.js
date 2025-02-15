@@ -86,7 +86,7 @@ export class Avatar extends HTMLElement {
       }
 
       .avatar-image {
-        background-color: ${this.getRandomColor()};
+        background-color: var(--color-accent, #90CAF9);
         color: var(--color-text-primary, #FFFFFF);
         display: flex;
         align-items: center;

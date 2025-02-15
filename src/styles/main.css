@@ -1,0 +1,46 @@
+:root {
+  /* Default accent color */
+  --color-accent: #A7CBDA;
+  --color-accent-name: 'blue';
+
+  /* Other variables */
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-background: #FFFFFF;
+  --color-border: #EEEEEE;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Border radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Apply accent color to components */
+.avatar--pill {
+  background-color: var(--color-accent);
+}
+
+.button--primary {
+  background-color: var(--color-accent);
+}
+
+.input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-accent) 25%, transparent);
+}
+
+/* Add any other component styles that should use the accent color */ 

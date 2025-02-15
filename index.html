@@ -70,6 +70,84 @@
         <h3 class="demo-title">Theme Settings</h3>
         <div class="demo-content">
           <ui-toggle id="themeToggle" label="Dark Mode"></ui-toggle>
+          <div style="width: 100%; margin-top: 1rem;">
+            <h4 style="margin-bottom: 0.5rem; color: var(--color-text-secondary);">Accent Color</h4>
+            <ui-accent-selector id="accentSelector"></ui-accent-selector>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accent Colors Preview -->
+    <section class="section">
+      <h2 class="section-title">Accent Colors Preview</h2>
+      <div class="component-grid">
+        <div class="demo-card">
+          <h3 class="demo-title">Interactive Components</h3>
+          <div class="demo-content" style="flex-direction: column; gap: 1.5rem;">
+            <!-- Button Group -->
+            <div>
+              <p class="demo-subtitle" style="margin-bottom: 0.5rem; color: var(--color-text-secondary);">Buttons</p>
+              <div style="display: flex; gap: 0.5rem;">
+                <ui-button>Accent Button</ui-button>
+                <ui-button variant="ghost">Ghost Button</ui-button>
+              </div>
+            </div>
+
+            <!-- Toggle Group -->
+            <div>
+              <p class="demo-subtitle" style="margin-bottom: 0.5rem; color: var(--color-text-secondary);">Toggle Switch</p>
+              <ui-toggle label="Accent Toggle" checked></ui-toggle>
+            </div>
+
+            <!-- Input Group -->
+            <div>
+              <p class="demo-subtitle" style="margin-bottom: 0.5rem; color: var(--color-text-secondary);">Input Field</p>
+              <ui-input label="Accent Input" placeholder="Type something..."></ui-input>
+            </div>
+
+            <!-- Avatar Group -->
+            <div>
+              <p class="demo-subtitle" style="margin-bottom: 0.5rem; color: var(--color-text-secondary);">Avatars</p>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <ui-avatar 
+                  name="Alex Johnson"
+                  variant="pill"
+                  direction="horizontal"
+                  size="desktop">
+                </ui-avatar>
+                <ui-avatar 
+                  name="Sarah Wilson"
+                  variant="circle"
+                  size="desktop">
+                </ui-avatar>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <h3 class="demo-title">Color Information</h3>
+          <div class="demo-content" style="flex-direction: column; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div id="currentAccentSwatch" style="
+                width: 4rem;
+                height: 4rem;
+                border-radius: 0.75rem;
+                background-color: var(--color-accent);
+                transition: background-color 0.3s ease;
+              "></div>
+              <div>
+                <p style="margin: 0; color: var(--color-text-primary);" id="currentAccentName">Current Accent</p>
+                <p style="margin: 0; font-family: monospace; color: var(--color-text-secondary);" id="currentAccentValue"></p>
+              </div>
+            </div>
+            <ui-card elevation="low" style="margin-top: 1rem;">
+              <p style="margin: 0; color: var(--color-text-secondary); font-size: 0.875rem;">
+                Click the color buttons above to see how the accent color affects different components in real-time.
+              </p>
+            </ui-card>
+          </div>
         </div>
       </div>
     </section>
@@ -242,6 +320,7 @@
   <script type="module" src="/src/components/Card.js"></script>
   <script type="module" src="/src/components/Modal.js"></script>
   <script type="module" src="/src/components/Avatar.js"></script>
+  <script type="module" src="/src/components/AccentColorSelector.js"></script>
 
   <script>
     // Theme Toggle
@@ -261,6 +340,55 @@
       } else {
         document.documentElement.removeAttribute('data-theme');
       }
+    });
+
+    // Wait for custom elements to be defined
+    window.addEventListener('load', () => {
+      // Accent Color Selector
+      const accentSelector = document.getElementById('accentSelector');
+      const currentAccentValue = document.getElementById('currentAccentValue');
+      const currentAccentName = document.getElementById('currentAccentName');
+      
+      // Function to update color info display
+      const updateColorInfo = (name, value) => {
+        currentAccentValue.textContent = value;
+        currentAccentName.textContent = `Current Accent: ${name}`;
+      };
+
+      // Wait for the component to be ready
+      requestAnimationFrame(() => {
+        // Set initial accent color
+        const initialColor = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim();
+        const initialColorButton = accentSelector?.shadowRoot?.querySelector(`.color-button[style*="${initialColor}"]`);
+        if (initialColorButton) {
+          initialColorButton.classList.add('selected');
+          updateColorInfo('blue', initialColor);
+        }
+      });
+
+      // Handle accent color changes
+      accentSelector.addEventListener('accent-color-change', (e) => {
+        console.log('Accent color changed:', e.detail);
+        document.documentElement.style.setProperty('--color-accent', e.detail.value);
+        updateColorInfo(e.detail.name, e.detail.value);
+        
+        // Update components that use the accent color
+        document.querySelectorAll('ui-avatar').forEach(avatar => {
+          avatar.style.setProperty('--color-accent', e.detail.value);
+        });
+        
+        document.querySelectorAll('ui-button').forEach(button => {
+          button.style.setProperty('--color-accent', e.detail.value);
+        });
+        
+        document.querySelectorAll('ui-input').forEach(input => {
+          input.style.setProperty('--color-accent', e.detail.value);
+        });
+
+        document.querySelectorAll('ui-toggle').forEach(toggle => {
+          toggle.style.setProperty('--color-accent', e.detail.value);
+        });
+      });
     });
 
     // Modal Demo
