@@ -100,6 +100,116 @@ A modal dialog component with backdrop and animations.
 **Events:**
 - `close`: Fired when the modal is closed
 
+### Avatar (`<ui-avatar>`)
+
+A versatile avatar component with multiple variants including square, circle, and expandable pill formats.
+
+```html
+<ui-avatar name="John Doe" image="/path/to/image.jpg" variant="circle"></ui-avatar>
+<ui-avatar name="Jane Smith" variant="pill" direction="vertical"></ui-avatar>
+```
+
+**Attributes:**
+- `variant`: 'square' (default) | 'circle' | 'pill'
+- `size`: 'mobile' | 'desktop' (default)
+- `name`: string
+- `image`: string (URL to image)
+- `direction`: 'horizontal' (default) | 'vertical' (for pill variant)
+
+### Accent Color Selector (`<ui-accent-selector>`)
+
+A component that allows users to select from predefined accent colors to customize the UI.
+
+```html
+<ui-accent-selector></ui-accent-selector>
+```
+
+**Events:**
+- `accent-color-change`: Fired when a new accent color is selected
+
+### Article Card (`<ui-article-card>`)
+
+A standard article card component with image, title, synopsis, author info, and CTA.
+
+```html
+<ui-article-card
+  title="Article Title"
+  synopsis="A brief description of the article content."
+  author-name="Author Name"
+  author-image="/path/to/author.jpg"
+  date="2023-06-15T10:30:00"
+  image="/path/to/article-image.jpg"
+  cta-text="Read more"
+  url="#article-link">
+</ui-article-card>
+```
+
+**Attributes:**
+- `title`: string
+- `synopsis`: string
+- `author-name`: string
+- `author-image`: string (URL to author image)
+- `date`: string (ISO date string)
+- `image`: string (URL to article image)
+- `cta-text`: string
+- `url`: string
+
+### Article Card V2 (`<ui-article-card-v2>`)
+
+An enhanced article card with tag labels and engagement metrics (comments and likes).
+
+```html
+<ui-article-card-v2
+  title="Article Title"
+  tag="Category"
+  author-name="Author Name"
+  author-image="/path/to/author.jpg"
+  date="2023-06-15T10:30:00"
+  image="/path/to/article-image.jpg"
+  comments="5"
+  likes="12"
+  url="#article-link">
+</ui-article-card-v2>
+```
+
+**Attributes:**
+- `title`: string
+- `tag`: string
+- `author-name`: string
+- `author-image`: string (URL to author image)
+- `date`: string (ISO date string)
+- `image`: string (URL to article image)
+- `comments`: string (number of comments)
+- `likes`: string (number of likes)
+- `url`: string
+
+### Article Card V3 (`<ui-article-card-v3>`)
+
+A horizontal layout article card with a vertical avatar pill, featuring a three-column design with author info, content, and image.
+
+```html
+<ui-article-card-v3
+  title="Article Title"
+  synopsis="A brief description of the article content."
+  author-name="Author Name"
+  author-image="/path/to/author.jpg"
+  edited-date="2023-06-15T10:30:00"
+  image="/path/to/article-image.jpg"
+  cta-text="Read more"
+  url="#article-link">
+</ui-article-card-v3>
+```
+
+**Attributes:**
+- `title`: string
+- `synopsis`: string
+- `author-name`: string
+- `author-image`: string (URL to author image)
+- `edited-date`: string (ISO date string)
+- `image`: string (URL to article image)
+- `cta-text`: string
+- `url`: string
+
 ## Getting Started
 
 1. Install dependencies:
@@ -137,8 +247,21 @@ The component library uses a consistent color palette that can be customized thr
   --color-primary-dark: #42A5F5;
   --color-secondary: #F48FB1;
   --color-secondary-dark: #EC407A;
+  --color-accent: #A7CBDA; /* Default accent color */
 }
 ```
+
+### Accent Colors
+
+The library includes a built-in accent color system with the following options:
+- Blue: #A7CBDA (default)
+- Beige: #DCDCC9
+- Orange: #FA9133
+- Pink: #F9C8C5
+- Yellow: #F5C260
+- Cyan: #33DBF5
+
+Use the `<ui-accent-selector>` component to allow users to switch between these colors.
 
 ### Typography
 
